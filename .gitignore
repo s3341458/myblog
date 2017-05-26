@@ -1,3 +1,4 @@
 config.cfg
+flaskr.db
 venv
 __pycache__

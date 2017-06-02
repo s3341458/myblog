@@ -62,6 +62,10 @@ def show_entries():
     entries = cur.fetchall()
     return render_template('show_entries.html', entries=entries)
 
+@app.route('/test')
+def test_bootstrap():
+    return render_template('test_bootstrap.html')
+
 @app.route('/add', methods=['POST'])
 def add_entry():
     if not session.get('logged_in'):

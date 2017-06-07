@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+
+{% block body %}
+    <div class="site-wrapper">
+
+      <div class="site-wrapper-inner">
+
+        <div class="cover-container">
+
+          <div class="masthead clearfix">
+            <div class="inner">
+              <h3 class="masthead-brand">Cheng homepage</h3>
+              <nav>
+                <ul class="nav masthead-nav">
+                  <li class="active"><a data-toggle="tab" href="#cover-section">Home</a></li>
+                  <li><a data-toggle="tab" href="#blog-section">Blogs</a></li>
+                  <li><a data-toggle="tab" href="#contact-section">Contact</a></li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+
+          <div class="tab-content">
+              <div id="cover-section" class="inner cover tab-pane fade in active">
+                <h1 class="cover-heading">About</h1>
+                <div class="row">
+                    <div class="col-md-4">
+                        <img src= />
+                    </div>
+                    <div class="col-md-8">
+                        <p class="lead">My name is Cheng Yu. Currently I am work for <a href="https://gracecrm.com/">UNITIX</a> as a fullstack developer</p>
+                        <p class="lead">I would say I am not that kind of "professional programmer". I love computing technology and luckily I got a job as programmer</p>
+                        <p>I do not have a very clear bundary of what I can or can not do, but I am most interested in Operating System, Functional Programming, Artificial Intelligence, Information Security</p>
+                    </div>
+                </div>
+              </div>
+
+              <div id="blog-section" class="inner cover tab-pane fade">
+                  <p>blog section has not been opened yet</p>
+              </div>
+
+              <div id="contact-section" class="inner cover tab-pane fade">
+                <h1 class="cover-heading">Contact Information.</h1>
+                <p class="lead">Phone: +61451041116</p>
+                <p class="lead">email: chengyu0316@gmail.com</p>
+              </div>
+          </div>
+
+          <div class="mastfoot">
+            <div class="inner">
+              <p>cover template for cheng</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+    {% endblock %}
+</html>

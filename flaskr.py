@@ -56,17 +56,13 @@ def initdb_command():
     print('Initialized the database.')
 
 @app.route('/')
-def show_entries():
+def index():
     db = get_db()
     cur = db.execute('select title, text from entries order by id desc')
     entries = cur.fetchall()
-    return render_template('show_entries.html', entries=entries)
+    return render_template('cover.html', entries=entries)
 
-@app.route('/test')
-def test_bootstrap():
-    return render_template('test_bootstrap.html')
-
-@app.route('/add', methods=['POST'])
+@app.route('/add/', methods=['POST'])
 def add_entry():
     if not session.get('logged_in'):
         abort(401)
@@ -77,7 +73,13 @@ def add_entry():
     flash('New entry was successfully posted')
     return redirect(url_for('show_entries'))
 
-@app.route('/login', methods=['GET', 'POST'])
+@app.route('/add_entry/', methods=['GET'])
+def add_entry_view():
+    if not session.get('logged_in'):
+        abort(401)
+    return render_template('add_entry.html', entries=entries)
+
+@app.route('/login/', methods=['GET', 'POST'])
 def login():
     error = None
     if request.method == 'POST':
@@ -91,7 +93,7 @@ def login():
             return redirect(url_for('show_entries'))
     return render_template('login.html', error=error)
 
-@app.route('/logout')
+@app.route('/logout/')
 def logout():
     session.pop('logged_in', None)
     flash('You were logged out')

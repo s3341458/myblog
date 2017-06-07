@@ -2,4 +2,5 @@ config.cfg
 flaskr.db
 node_modules
 venv
+temp
 __pycache__

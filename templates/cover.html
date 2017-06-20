@@ -7,19 +7,38 @@
 
         <div class="cover-container">
 
-          <div class="masthead clearfix">
-            <div class="inner">
-              <h3 class="masthead-brand">Cheng homepage</h3>
-              <nav>
-                <ul class="nav masthead-nav">
+           <nav class="navbar navbar-default">
+            <div class="container-fluid">
+              <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Cheng homepage</a>
+              </div>
+              <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
                   <li class="active"><a data-toggle="tab" href="#cover-section">Home</a></li>
                   <li><a data-toggle="tab" href="#blog-section">Blogs</a></li>
                   <li><a data-toggle="tab" href="#contact-section">Contact</a></li>
+                  <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hire Me<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                      <li><a href="#">Download my resume</a></li>
+                      <li role="separator" class="divider"></li>
+                      <li class="dropdown-header">Contact Me</li>
+                      <li><a href="#">Leave Message</a></li>
+                      <li><a href="#">Make An Appointment</a></li>
+                    </ul>
+                  </li>
                 </ul>
-              </nav>
-            </div>
-          </div>
-
+                <ul class="nav navbar-nav navbar-right">
+                </ul>
+              </div><!--/.nav-collapse -->
+            </div><!--/.container-fluid -->
+          </nav>
           <div class="tab-content">
               <div id="cover-section" class="inner cover tab-pane fade in active">
                 <h1 class="cover-heading">About</h1>
@@ -30,7 +49,21 @@
                     <div class="col-md-8">
                         <p class="lead">My name is Cheng Yu. Currently I am work for <a href="https://gracecrm.com/">UNITIX</a> as a fullstack developer</p>
                         <p class="lead">I would say I am not that kind of "professional programmer". I love computing technology and luckily I got a job as programmer</p>
-                        <p>I do not have a very clear bundary of what I can or can not do, but I am most interested in Operating System, Functional Programming, Artificial Intelligence, Information Security</p>
+                        I do not have a very clear bundary of what I can or can not do, but I am most interested in: 
+                        <ul>
+                            <li>
+                                Operating System Mechanism (Perferable Linux)
+                            </li>
+                            <li>
+                                Functional Programming (Perferable Haskell, Scheme)
+                            </li>
+                            <li>
+                                Artificial Intelligence (Perferable Machine Learning)
+                            </li>
+                            <li>
+                                Information Security (Just know little about this area..., currently interested in encrypted currency technology)
+                            </li>
+                        </ul>
                     </div>
                 </div>
               </div>

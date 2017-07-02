@@ -1,18 +1,10 @@
 # all the imports
 import os
-import sqlite3
 from flask import Flask, request, session, g, redirect, url_for, abort, \
      render_template, flash
+from model import Timeline, transaction, LIFE, WORK_BUSINESS, EDUCATION, \
+    TIMELINE_ENTRY_CLASS, TIMELINE_ICON, TIMELINE_HEADING_STYLE, Session
 
-# class ProductionConfig(object):
-    # pass
-
-# class DevelopmentConfig(object):
-    # DEBUG = True
-    # TESTING = True
-    # FLASK_APP="flaskr"
-
-# app.config.from_object(__name__ + ".DevelopmentConfig")
 app = Flask(__name__) # create the application instance :)
 
 # Load default config and override config from an environment variable
@@ -22,62 +14,40 @@ app.config.update(dict(
 
 app.config.from_pyfile("config.cfg")
 
-def connect_db():
-    """Connects to the specific database."""
-    rv = sqlite3.connect(app.config['DATABASE'])
-    rv.row_factory = sqlite3.Row
-    return rv
-
-
-def get_db():
-    """Opens a new database connection if there is none yet for the
-    current application context.
-    """
-    if not hasattr(g, 'sqlite_db'):
-        g.sqlite_db = connect_db()
-    return g.sqlite_db
-
-@app.teardown_appcontext
-def close_db(error):
-    """Closes the database again at the end of the request."""
-    if hasattr(g, 'sqlite_db'):
-        g.sqlite_db.close()
-
-def init_db():
-    db = get_db()
-    with app.open_resource('schema.sql', mode='r') as f:
-        db.cursor().executescript(f.read())
-    db.commit()
-
-@app.cli.command('initdb')
-def initdb_command():
-    """Initializes the database."""
-    init_db()
-    print('Initialized the database.')
+app.add_template_global(LIFE, 'LIFE')
+app.add_template_global(WORK_BUSINESS, "WORK_BUSINESS")
+app.add_template_global(EDUCATION, 'EDUCATION')
+app.add_template_global(TIMELINE_ENTRY_CLASS, 'TIMELINE_ENTRY_CLASS')
+app.add_template_global(TIMELINE_ICON, 'TIMELINE_ICON')
+app.add_template_global(TIMELINE_HEADING_STYLE, 'TIMELINE_HEADING_STYLE')
 
 @app.route('/')
 def index():
-    db = get_db()
-    cur = db.execute('select title, text from entries order by id desc')
-    entries = cur.fetchall()
-    return render_template('cover.html', entries=entries)
+    session = Session()
+    timeline_entries = session.query(Timeline).all()
+    return render_template('cover.html', timeline_entries=timeline_entries)
 
 @app.route('/add/', methods=['POST'])
 def add_entry():
-    if not session.get('logged_in'):
-        abort(401)
-    db = get_db()
-    db.execute('insert into entries (title, text) values (?, ?)',
-                 [request.form['title'], request.form['text']])
-    db.commit()
-    flash('New entry was successfully posted')
-    return redirect(url_for('show_entries'))
+    pass
 
 @app.route('/add_entry/', methods=['GET'])
 def add_entry_view():
     if not session.get('logged_in'):
         abort(401)
-    return render_template('add_entry.html', entries=entries)
+    return render_template('add_entry.html')
+
+@app.route('/add_timeline/', methods=['GET'])
+def add_timeline():
+    if not session.get('logged_in'):
+        abort(401)
+    return render_template('add_timeline.html')
+
+@app.route('/list_timeline/', methods=['GET'])
+def list_timeline():
+    if not session.get('logged_in'):
+        abort(401)
+    return render_template('timeline_list.html')
 
 @app.route('/login/', methods=['GET', 'POST'])
 def login():

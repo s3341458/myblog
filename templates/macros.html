@@ -21,7 +21,11 @@
           <p>
             <small class="text-info">
               <i class="glyphicon glyphicon-time">
-                {{ timeline.date_from}} - {{ timeline.date_to }}
+                {% if timeline.date_from != timeline.date_to %}
+                    {{ timeline.date_from }} - {{ timeline.date_to }}
+                {% else %}
+                    {{ timeline.date_from }}
+                {% endif %}
               </i>
             </small>
           </p>

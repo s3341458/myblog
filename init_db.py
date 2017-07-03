@@ -41,54 +41,54 @@ events = [
                         "the full time developer for UNITIX"},
         {"title": "Pass NATTI Interpretation Test(Chinese to English) become"
                   "cerificated level 2 interpreter",
-         "time_from": "19/02/2016",
-         "time_to": "19/02/2016",
+         "time_from": "19/02/2015",
+         "time_to": "19/02/2015",
          "event_type": EDUCATION,
          "description": ""},
         {"title": "Become Causal Fullstack Developer for {}".format(unitix_ref),
-         "time_from": "09/08/2015",
-         "time_to": "09/08/2015",
+         "time_from": "09/08/2014",
+         "time_to": "09/08/2014",
          "event_type": WORK_BUSINESS,
          "description": "Thanks James Strachen, Richard Walker, {}".\
                         format(dan_ref) + " give me this chance"},
         {"title": "RMIT research project",
-         "time_from": "01/03/2015",
-         "time_to": "01/04/2015",
+         "time_from": "01/03/2014",
+         "time_to": "01/04/2014",
          "event_type": WORK_BUSINESS,
          "description": "This project was done by me and my friend Zheng Xin " +
                         "supervised by {} sponsored by RMIT".format(jenny_ref) +
                         " for participating iAwards"},
         {"title": "RMIT summer internship project",
-         "time_from": "01/01/2015",
-         "time_to": "01/03/2015",
+         "time_from": "01/01/2014",
+         "time_to": "01/03/2014",
          "event_type": WORK_BUSINESS,
          "description": "This project was supervised by {} sponsored " +
                         "by RMIT".format(jenny_ref) + " for extending my " +
                         "previous graduation research thesis"},
         {"title": "Graduated From RMIT with overall GPA 3.8",
-         "time_from": "20/12/2014",
-         "time_to": "20/12/2014",
+         "time_from": "20/12/2013",
+         "time_to": "20/12/2013",
          "event_type": EDUCATION,
          "description": "I graduated from RMIT with master degree of " +
                         "computer science"},
         {"title": "RMIT lexer collabroated project",
-         "time_from": "01/01/2014",
-         "time_to": "01/03/2014",
+         "time_from": "03/01/2013",
+         "time_to": "15/05/2014",
          "event_type": WORK_BUSINESS,
          "description": "This project was done by me and my friend phD " +
                         "Warrick Wang supervised by {} sponsored by RMIT and ".\
                         format(jenny_ref) + " for classify whether a tweet" +
                         " comes from a bussiness account or personal account"},
         {"title": "RMIT summer internship project",
-         "time_from": "01/01/2014",
+         "time_from": "03/01/2014",
          "time_to": "01/03/2014",
          "event_type": WORK_BUSINESS,
          "description": "This project was supervised by {} sponsored ".\
                         format(culpepper_ref) + "by RMIT for trying to " +
                         "finding a better architecture for search engine"},
         {"title": "Started Studying at RMIT",
-         "time_from": "01/01/2016",
-         "time_to": "01/03/2016",
+         "time_from": "19/02/2012",
+         "time_to": "19/02/2012",
          "event_type": EDUCATION,
          "description": "No description"}
 ]

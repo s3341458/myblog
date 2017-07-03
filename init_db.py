@@ -7,11 +7,11 @@ Base.metadata.create_all(engine)
 
 
 def ref_string(ref_string, ref_url):
-    return '<a href="{}">{}</a>'.format(ref_url, ref_url)
+    return '<a href="{}">{}</a>'.format(ref_url, ref_string)
 
 
 unitix_ref = ref_string("UNITIX", "https://gracecrm.com/")
-dan_ref = ref_string("Daniel Collins(my mentor)", "https://dcollins.info/")
+dan_ref = ref_string("Daniel Collins", "https://dcollins.info/")
 jenny_ref = ref_string("Dr Jenny (Xiuzhen) Zhang",
                        "http://www.xiuzhenzhang.org/")
 culpepper_ref = ref_string("Dr Jason Shane Culpepper",
@@ -40,7 +40,7 @@ events = [
          "description": "After nearly one year of casual work finally become " +
                         "the full time developer for UNITIX"},
         {"title": "Pass NATTI Interpretation Test(Chinese to English) become"
-                  "cerificated level 2 interpreter",
+                  " cerificated level 2 interpreter",
          "time_from": "19/02/2015",
          "time_to": "19/02/2015",
          "event_type": EDUCATION,

@@ -25,8 +25,8 @@ TIMELINE_ICON = {
 }
 
 TIMELINE_HEADING_STYLE = {
-    LIFE: "text-info",
-    WORK_BUSINESS: "text-success",
+    LIFE: "text-danger",
+    WORK_BUSINESS: "text-primary",
     EDUCATION: "text-warning"
 }
 
@@ -40,9 +40,6 @@ class Timeline(Base):
     event_type = Column(Integer, nullable=False)
     description = Column(String, nullable=False)
     image_url = Column(String)
-
-    def in_different_year(self, the_other_event):
-        return self.date_from.year != the_other_event.date_from.year
 
 engine = create_engine('postgresql://chengyu@localhost/blog')
 

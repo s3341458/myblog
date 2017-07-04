@@ -86,5 +86,17 @@
       </div>
 
     </div>
-    {% endblock %}
-</html>
+{% endblock %}
+
+
+
+{% block js %}
+    // always keep lasted nav info recorded
+    $("ul.navbar-nav > li > a").on("shown.bs.tab", function(e) {
+      var id = $(e.target).attr("href").substr(1);
+      window.location.hash = id;
+    });
+
+    var hash = window.location.hash;
+    $('#navbar a[href="' + hash + '"]').tab('show');
+{% endblock %}

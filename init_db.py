@@ -73,15 +73,15 @@ events = [
                         "computer science"},
         {"title": "RMIT lexer collabroated project",
          "time_from": "03/01/2013",
-         "time_to": "15/05/2014",
+         "time_to": "15/05/2013",
          "event_type": WORK_BUSINESS,
          "description": "This project was done by me and my friend phD " +
                         "Warrick Wang supervised by {} sponsored by RMIT and ".\
                         format(jenny_ref) + " for classify whether a tweet" +
                         " comes from a bussiness account or personal account"},
         {"title": "RMIT summer internship project",
-         "time_from": "03/01/2014",
-         "time_to": "01/03/2014",
+         "time_from": "03/01/2013",
+         "time_to": "01/03/2013",
          "event_type": WORK_BUSINESS,
          "description": "This project was supervised by {} sponsored ".\
                         format(culpepper_ref) + "by RMIT for trying to " +

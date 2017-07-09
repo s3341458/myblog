@@ -91,6 +91,11 @@
 
 
 {% block js %}
+    $('#navbar a').click(function(e) {
+      e.preventDefault();
+      $(this).tab('show');
+    });
+
     // always keep lasted nav info recorded
     $("ul.navbar-nav > li > a").on("shown.bs.tab", function(e) {
       var id = $(e.target).attr("href").substr(1);

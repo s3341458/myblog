@@ -40,22 +40,23 @@
 {% macro timeline_section(timelines) %}
     <div id="timeline-section" class="inner cover tab-pane fade">
         <div class="container">
-        <header class="page-header">
-            <h1>Timeline events for life, career and educations</h1>
-        </header>
-        <ul class="timeline">
-            <li><div class="tldate">Now</div></li>
-            {% for i in range(0, timelines|length) %}
-                {{ timeline_entry(timelines[i]) }}
-                {% if i + 1 < timelines|length and
-                        timelines[i].date_from.year != timelines[i + 1].date_from.year %}
-                    <li>
-                        <div class="tldate">
-                            {{ timelines[i + 1].date_from.year }}
-                        </div>
-                    </li>
-                {% endif %}
-            {% endfor %}
-        </ul>
+            <header class="page-header">
+                <h1>Timeline events for life, career and educations</h1>
+            </header>
+            <ul class="timeline">
+                <li><div class="tldate">Now</div></li>
+                {% for i in range(0, timelines|length) %}
+                    {{ timeline_entry(timelines[i]) }}
+                    {% if i + 1 < timelines|length and
+                            timelines[i].date_from.year != timelines[i + 1].date_from.year %}
+                        <li>
+                            <div class="tldate">
+                                {{ timelines[i + 1].date_from.year }}
+                            </div>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
   </div>
 {% endmacro %}

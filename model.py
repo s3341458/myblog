@@ -2,9 +2,6 @@ import os
 import sys
 from sqlalchemy import Column, ForeignKey, Integer, String, Date
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import relationship, sessionmaker
-from sqlalchemy import create_engine
-from contextlib import contextmanager
 
 Base = declarative_base()
 
@@ -41,17 +38,3 @@ class Timeline(Base):
     description = Column(String, nullable=False)
     image_url = Column(String)
 
-engine = create_engine('postgresql://chengyu@localhost/blog')
-
-Session = sessionmaker(autocommit=False, autoflush=False, bind=engine)
-
-@contextmanager
-def transaction():
-    session = Session()
-    yield session
-    try:
-        session.commit()
-    except Exception:
-        session.rollbacK()
-    finally:
-        session.close()

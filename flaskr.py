@@ -1,7 +1,7 @@
 # all the imports
 import os
 from flask import Flask, request, session, g, redirect, url_for, abort, \
-     render_template, flash, send_file
+     render_template, flash, send_from_directory
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import create_engine
 
@@ -26,7 +26,7 @@ Session = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 def download_directory():
     current_directory = os.path.dirname(os.path.realpath(__file__))
-    download_directory = os.path.join(current_directory, "download")
+    return os.path.join(current_directory, "download")
 
 @app.route('/')
 def index():
@@ -60,8 +60,12 @@ def list_timeline():
 @app.route('/download/<string:file_name>/', methods=['GET'])
 def download_file(file_name):
     try:
-        return send_from_directory(download_directory, file_name)
+        print(download_directory())
+        r = send_from_directory(download_directory(), file_name)
+        print(r)
+        return r
     except Exception as e:
+        print("debug here", e)
         abort(404)
 
 @app.route('/login/', methods=['GET', 'POST'])

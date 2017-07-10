@@ -27,8 +27,7 @@
                   <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Hire Me<span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                      <li><a href="/download/resume.pdf/">Download My Resume</a></li>
-                      <li><a href="https://gracecrm.com/">Download My Resume</a></li>
+                      <li><a href="/download/resume_2017.pdf/">Download My Resume</a></li>
                     </ul>
                   </li>
                 </ul>
@@ -65,7 +64,7 @@
                     </div>
                 </div>
               </div>
-              <div id="contact-section" class="inner cover tab-pane fade">
+              <div id="contact-section" class="inner cover tab-pane in fade">
                 <h1 class="cover-heading">Contact Information.</h1>
                 <p class="lead">Phone: +61451041116</p>
                 <p class="lead">email: chengyu0316@gmail.com</p>
@@ -88,11 +87,6 @@
 
 
 {% block js %}
-    $('#navbar a').click(function(e) {
-      e.preventDefault();
-      $(this).tab('show');
-    });
-
     // always keep lasted nav info recorded
     $("ul.navbar-nav > li > a").on("shown.bs.tab", function(e) {
       var id = $(e.target).attr("href").substr(1);

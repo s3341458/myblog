@@ -60,12 +60,9 @@ def list_timeline():
 @app.route('/download/<string:file_name>/', methods=['GET'])
 def download_file(file_name):
     try:
-        print(download_directory())
-        r = send_from_directory(download_directory(), file_name)
-        print(r)
-        return r
+        return send_from_directory(download_directory(), file_name,
+                                   as_attachment=True)
     except Exception as e:
-        print("debug here", e)
         abort(404)
 
 @app.route('/login/', methods=['GET', 'POST'])

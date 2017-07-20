@@ -4160,6 +4160,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   display: none;
 }
 .tab-content > .active {
+  position: relative;
   display: block;
 }
 .nav-tabs .dropdown-menu {

@@ -21,9 +21,9 @@
               </div>
               <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                  <li class="active"><a data-toggle="tab" href="#cover-section">Home</a></li>
-                  <li><a data-toggle="tab" href="#contact-section">Contact</a></li>
-                  <li><a data-toggle="tab" href="#timeline-section">TimeLine</a></li>
+                  <li><a data-toggle="tab" href="#cover" data-target="#cover-section">Home</a></li>
+                  <li><a data-toggle="tab" href="#contact" data-target="#contact-section">Contact</a></li>
+                  <li><a data-toggle="tab" href="#timeline" data-target="#timeline-section">TimeLine</a></li>
                   <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Hire Me<span class="caret"></span></a>
                     <ul class="dropdown-menu">
@@ -37,7 +37,7 @@
             </div><!--/.container-fluid -->
           </nav>
           <div class="tab-content">
-              <div id="cover-section" class="inner cover tab-pane fade in active">
+              <div id="cover-section" class="inner cover tab-pane fade in">
                 <h1 class="cover-heading">About</h1>
                 <div class="row">
                     <div class="col-md-4">
@@ -96,5 +96,8 @@
     });
 
     var hash = window.location.hash;
+    if (!hash) {
+        hash = "#cover";
+    }
     $('#navbar a[href="' + hash + '"]').tab('show');
 {% endblock %}

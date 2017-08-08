@@ -75,9 +75,10 @@ if __name__ == "__main__":
              "time_from": "01/01/2014",
              "time_to": "01/03/2014",
              "event_type": WORK_BUSINESS,
-             "description": "This project was supervised by {} sponsored " +
-                            "by RMIT".format(jenny_ref) + " for extending my " +
-                            "previous graduation research thesis"},
+             "description": "This project was supervised by {} sponsored ".\
+                            format(jenny_ref) + \
+                            "by RMIT for extending my previous graduation" +
+                            "research thesis"},
             {"title": "Graduated From RMIT with overall GPA 3.8",
              "time_from": "20/12/2013",
              "time_to": "20/12/2013",

@@ -98,7 +98,7 @@ QUESTIONS = [
     {"title": CURRENT_WORKING_STATUS,
      "question": "Are you currently in a contractor or permanent role? If so " +
                  "please give detail including any possiblity of extensions.",
-     "answer": "I am in permanent role at the moment"},
+     "answer": "I am in a permanent role at the moment"},
     {"title": EMERGENCY_CONTACT,
      "question": "Please include your next of kin/emergency contact details.",
      "answer": EMERGENCY_CONTACT_ANSWER},

@@ -65,6 +65,15 @@ def download_file(file_name):
     except Exception as e:
         abort(404)
 
+@app.route('/reply/<string:token>/', methods=['GET'])
+def reply(token):
+    from model import Reply
+    session = Session()
+    reply = session.query(Reply).filter(Reply.token == token).first()
+    if not reply:
+        abort(404)
+    return render_template('reply.html', reply=reply)
+
 @app.route('/login/', methods=['GET', 'POST'])
 def login():
     error = None

@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+{% from "macros.html" import question_entry %}
+
+{% block body %}
+    <ul>
+        {% for question in reply.question_entries %}
+            {{ question_entry(question) }}
+        {% endfor %}
+    </ul>
+{% endblock %}
+
+
+
+{% block js %}
+{% endblock %}

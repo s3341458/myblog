@@ -62,3 +62,41 @@
         </div>
   </div>
 {% endmacro %}
+
+
+{% macro question_entry(question) %}
+    <li>
+        <div class="panel panel-default">
+            <div class="panel-heading text-warning">{{ question.question }}</div>
+            <div class="panel-body text-success">{{ question.answer }}</div>
+        </div>
+    </li>
+{% endmacro %}
+
+{% macro timeline_entry(timeline) %}
+    <li class="{{ TIMELINE_ENTRY_CLASS[timeline.event_type] }}" >
+      <div class="tl-circ"></div>
+      <div class="timeline-panel">
+        <div class="tl-heading">
+          <h4 class="{{ TIMELINE_HEADING_STYLE[timeline.event_type] }}">
+              <i class="{{ TIMELINE_ICON[timeline.event_type] }}" aria-hidden="true"></i>
+              {{ timeline.title | safe  }}
+          </h4>
+          <p>
+            <small class="text-info">
+              <i class="glyphicon glyphicon-time">
+                {% if timeline.date_from != timeline.date_to %}
+                    {{ timeline.date_from }} - {{ timeline.date_to }}
+                {% else %}
+                    {{ timeline.date_from }}
+                {% endif %}
+              </i>
+            </small>
+          </p>
+        </div>
+        <div class="tl-body">
+            <p>{{ timeline.description | safe }}</p>
+        </div>
+      </div>
+    </li>
+{% endmacro %}

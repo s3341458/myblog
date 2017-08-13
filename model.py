@@ -1,6 +1,7 @@
 import os
 import sys
 from sqlalchemy import Column, ForeignKey, Integer, String, Date
+from sqlalchemy.orm import relationship
 from sqlalchemy.ext.declarative import declarative_base
 
 Base = declarative_base()
@@ -29,7 +30,7 @@ TIMELINE_HEADING_STYLE = {
 
 
 class Timeline(Base):
-    __tablename__ = "timeline"
+    __tablename__ = "timelines"
     id = Column(Integer, primary_key=True)
     title = Column(String, nullable=False)
     date_from = Column(Date, nullable=False)
@@ -37,4 +38,37 @@ class Timeline(Base):
     event_type = Column(Integer, nullable=False)
     description = Column(String, nullable=False)
     image_url = Column(String)
+
+class File(Base):
+    __tablename__ = "files"
+    id = Column(Integer, primary_key=True)
+    file_name = Column(String, nullable=False)
+    question_entry_id = Column(Integer, ForeignKey('question_entries.id'))
+    question_entry = relationship("QuestionEntry", backref="attachments")
+    download_uri = Column(String, nullable=False)
+
+class QuestionReplyAssociation(Base):
+    __tablename__ = "question_reply_relations"
+    id = Column(Integer, primary_key=True)
+    question_entry_id = Column(Integer, ForeignKey('question_entries.id'))
+    reply_id = Column(Integer, ForeignKey('replies.id'))
+    question = relationship("QuestionEntry", backref="reply_links")
+    reply = relationship("Reply", backref="question_links")
+
+class QuestionEntry(Base):
+    __tablename__ = "question_entries"
+    id = Column(Integer, primary_key=True)
+    title = Column(String, nullable=False)
+    question = Column(String, nullable=False)
+    answer = Column(String, nullable=False)
+    last_update_date = Column(Date, nullable=False)
+
+class Reply(Base):
+    __tablename__ = "replies"
+    id = Column(Integer, primary_key=True)
+    token = Column(String(8))
+    receiver_name = Column(String)
+    about = Column(String)
+    question_entries = relationship("QuestionEntry", backref="replies",
+                                    secondary="question_reply_relations")
 

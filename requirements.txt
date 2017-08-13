@@ -8,3 +8,4 @@ flask==0.12.2
 itsdangerous==0.24
 sqlalchemy==1.1.12
 psycopg2==2.7.3
+arrow==0.10.0

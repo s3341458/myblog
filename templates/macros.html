@@ -67,8 +67,12 @@
 {% macro question_entry(question) %}
     <li>
         <div class="panel panel-default">
-            <div class="panel-heading text-warning">{{ question.question }}</div>
-            <div class="panel-body text-success">{{ question.answer }}</div>
+            <div class="panel-heading text-warning">
+                {{  string_HTML_format(question.question) | safe  }}
+            </div>
+            <div class="panel-body text-success">
+                {{ string_HTML_format(question.answer) | safe }}
+            </div>
         </div>
     </li>
 {% endmacro %}

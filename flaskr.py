@@ -13,6 +13,7 @@ app.config.from_pyfile("config.cfg")
 
 from model import LIFE, WORK_BUSINESS, EDUCATION, \
     TIMELINE_ENTRY_CLASS, TIMELINE_ICON, TIMELINE_HEADING_STYLE
+from utility import string_HTML_format
 
 app.add_template_global(LIFE, 'LIFE')
 app.add_template_global(WORK_BUSINESS, "WORK_BUSINESS")
@@ -20,6 +21,7 @@ app.add_template_global(EDUCATION, 'EDUCATION')
 app.add_template_global(TIMELINE_ENTRY_CLASS, 'TIMELINE_ENTRY_CLASS')
 app.add_template_global(TIMELINE_ICON, 'TIMELINE_ICON')
 app.add_template_global(TIMELINE_HEADING_STYLE, 'TIMELINE_HEADING_STYLE')
+app.add_template_global(string_HTML_format, 'string_HTML_format')
 
 engine = create_engine(app.config["DATABASE_URI"])
 Session = sessionmaker(autocommit=False, autoflush=False, bind=engine)

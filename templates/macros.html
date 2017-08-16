@@ -67,15 +67,25 @@
 {% macro question_entry(question) %}
     <li>
         <div class="panel panel-default">
-            <div class="panel-heading text-warning">
+            <div class="panel-heading text-primary">
                 {{  string_HTML_format(question.question) | safe  }}
             </div>
             <div class="panel-body text-success">
                 {{ string_HTML_format(question.answer) | safe }}
             </div>
+            {% if question.attachments %}
+                <div class="panel-footer">
+                    {% for attachment in question.attachments %}
+                        <a href="{{ attachment.download_uri }}" class="text-info">
+                            {{ attachment.file_name }}
+                        </a>
+                    {% endfor %}
+                </div>
+            {% endif %}
         </div>
     </li>
 {% endmacro %}
+
 
 {% macro timeline_entry(timeline) %}
     <li class="{{ TIMELINE_ENTRY_CLASS[timeline.event_type] }}" >

@@ -1,4 +1,4 @@
-from model import QuestionEntry, QuestionReplyAssociation, Reply
+from model import QuestionEntry, QuestionReplyAssociation, Reply, File
 from flaskr import engine, Session
 import arrow
 
@@ -41,6 +41,8 @@ IDENTITY_ANSWER = \
 
 CONTRACTOR_PAYMENT_TYPE = "contractor payment type"
 CONTRACTOR_PAYMENT_TYPE_ANSWER = "Only PAYG acceptable at the moment"
+
+IDENTITY_PROOF = "identity proof"
 
 PAXUS_AVANDE_CAPABILITY = "capability regarding paxus avanda"
 PAXUS_AVANDE_CAPABILITY_ANSWER = \
@@ -114,15 +116,21 @@ QUESTIONS = [
                  "responsibilities of the role including an example of your " +
                  "relevant experience.",
      "answer": PAXUS_AVANDE_CAPABILITY_ANSWER},
+    {"title": IDENTITY_PROOF,
+     "question": "Identity proof",
+     "answer": "Here is my snapshot of my passport",
+     "files": [("passport.JPG", "/download/passport.JPG")]
+     },
 ]
 
 REPLIES = [
     {"token": "4d4beac2",
      "receiver_name": "EMalin@paxus.com.au",
-     "about": "Avadar Senior Consultant",
+     "about": "Reply about Avadar Senior Consultant",
      "questions": [COMMENCE_WORK_PERIOD, SALARY_EXPECTATION,
                    CURRENT_WORKING_STATUS, EMERGENCY_CONTACT, IDENTITY,
-                   CONTRACTOR_PAYMENT_TYPE, PAXUS_AVANDE_CAPABILITY]
+                   IDENTITY_PROOF, CONTRACTOR_PAYMENT_TYPE,
+                   PAXUS_AVANDE_CAPABILITY]
     }
 ]
 
@@ -133,6 +141,13 @@ def input_question(question_entry_dict, session):
     question.title = question_entry_dict["title"]
     question.question = question_entry_dict["question"]
     question.answer = question_entry_dict["answer"]
+    question.attachments = []
+    file_tuples = question_entry_dict.get("files", [])
+    for file_tuple in file_tuples:
+        question_file = File()
+        question_file.file_name = file_tuple[0]
+        question_file.download_uri = file_tuple[1]
+        question.attachments.append(question_file)
     question.last_update_date = arrow.utcnow().datetime
     session.add(question)
     session.commit()
@@ -166,6 +181,7 @@ def refresh_replies(session):
 
 if __name__ == "__main__":
     session = Session()
+    session.query(QuestionReplyAssociation).delete()
     session.query(QuestionEntry).delete()
     session.query(Reply).delete()
     refresh_replies(session)

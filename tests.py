@@ -35,7 +35,6 @@ class FlaskrTestCase(unittest.TestCase):
 
     def test_download_file(self):
         r = self.app.get("/download/test_download")
-        print("debug here", r.data)
 
 
 if __name__ == '__main__':

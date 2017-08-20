@@ -7,13 +7,12 @@ COMMENCE_WORK_PERIOD = "commence work waiting period"
 SALARY_EXPECTATION = "salary expectation"
 SALARY_EXPECTATION_ANSWER = \
 """ This really depends on the type of contract as I list as follows(in AUD):
-    permanent role $58/hr.
-    contract (equal or over one year)  $78/hr.
-    contract (equal or over three month)  $88/hr.
-    contract (less than three month)  $108-128/hr.
-    All above payment rates may varies due the specific position requirements,
-    to me the meaning of the project and who am I working with are somehow more
-    important than the pay rate.
+    permanent role (include super) $58/hr.
+    contract (equal or over one year)  $68/hr.
+    contract (equal or over three month)  $78/hr.
+    contract (less than three month)  $88-128/hr.
+    All above payment rates are negotiable, the meaning of the project and who
+    am I working with are somehow much more important than the pay rate.
 """
 
 HOLIDAY_PLAN = "holiday plan"
@@ -131,6 +130,13 @@ REPLIES = [
                    CURRENT_WORKING_STATUS, EMERGENCY_CONTACT, IDENTITY,
                    IDENTITY_PROOF, CONTRACTOR_PAYMENT_TYPE,
                    PAXUS_AVANDE_CAPABILITY]
+    },
+    {"token": "af3d5268",
+     "receiver_name": "everyone",
+     "about": "Commonly asked questions",
+     "questions": [COMMENCE_WORK_PERIOD, CURRENT_WORKING_STATUS,
+                   SALARY_EXPECTATION, EMERGENCY_CONTACT,
+                   IDENTITY, IDENTITY_PROOF]
     }
 ]
 
@@ -181,6 +187,7 @@ def refresh_replies(session):
 
 if __name__ == "__main__":
     session = Session()
+    session.query(File).delete()
     session.query(QuestionReplyAssociation).delete()
     session.query(QuestionEntry).delete()
     session.query(Reply).delete()
